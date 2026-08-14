@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#100c1f" />
+  <meta name="description" content="Record ridiculous replacement dialogue and dub your own scenes." />
+  <title>Dub Night — Voice Party Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#">DUB<span>NIGHT</span></a>
+    <div class="room-pill"><i></i> Local prototype</div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A voice-powered party game</p>
+        <h1>Bad dialogue.<br><em>Great cinema.</em></h1>
+        <p class="hero-text">Upload a scene, rewrite the lines, and perform the dub. Your recordings play back in sync with the video.</p>
+        <button class="primary big" id="startButton">Start a dub <span>→</span></button>
+        <p class="privacy-note">Everything stays in your browser during this prototype.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="poster poster-back"><span>TAKE 03</span></div>
+        <div class="poster poster-main">
+          <div class="fake-frame">
+            <div class="moon"></div>
+            <div class="silhouette one"></div><div class="silhouette two"></div>
+            <div class="subtitle">“I told you not to microwave the crown.”</div>
+          </div>
+          <div class="waveform"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+          <strong>THE WORST KING</strong><small>an improvised masterpiece</small>
+        </div>
+        <div class="sticker">YOUR VOICE<br>GOES HERE ↗</div>
+      </div>
+    </section>
+
+    <section class="studio hidden" id="studio">
+      <div class="studio-heading">
+        <div><p class="eyebrow">Recording room</p><h2>Make the scene yours.</h2></div>
+        <button class="ghost" id="resetButton">Reset session</button>
+      </div>
+
+      <div class="step-strip" aria-label="Progress">
+        <button class="step active" data-step="1"><span>1</span> Scene</button>
+        <button class="step" data-step="2"><span>2</span> Lines</button>
+        <button class="step" data-step="3"><span>3</span> Record</button>
+        <button class="step" data-step="4"><span>4</span> Premiere</button>
+      </div>
+
+      <div class="panel active" data-panel="1">
+        <div class="upload-card" id="uploadCard">
+          <input type="file" id="videoInput" accept="video/*" hidden />
+          <div class="upload-icon">▶</div>
+          <h3>Bring your own scene</h3>
+          <p>Choose a short video from your device. For testing, 15–60 seconds works best.</p>
+          <button class="primary" id="chooseVideo">Choose video</button>
+          <small>Use footage you own or have permission to use.</small>
+        </div>
+        <div class="video-preview hidden" id="videoPreview">
+          <video id="setupVideo" controls playsinline></video>
+          <div><strong id="videoName">Scene loaded</strong><span id="videoDuration">—</span></div>
+        </div>
+        <div class="panel-actions"><span></span><button class="primary" id="sceneNext" disabled>Write the lines →</button></div>
+      </div>
+
+      <div class="panel" data-panel="2">
+        <div class="instruction"><b>Write and time each line</b><span>Pause the video where a line should begin, then press “Use current time.”</span></div>
+        <div class="line-builder">
+          <video id="timingVideo" controls playsinline></video>
+          <div class="lines-side">
+            <div id="lineList"></div>
+            <button class="add-line" id="addLine">＋ Add another line</button>
+          </div>
+        </div>
+        <div class="panel-actions"><button class="ghost back" data-back="1">← Back</button><button class="primary" id="linesNext">Enter recording booth →</button></div>
+      </div>
+
+      <div class="panel" data-panel="3">
+        <div class="instruction"><b>Perform your lines</b><span>Headphones recommended. Recordings are kept only for this browser session.</span></div>
+        <div class="recording-grid">
+          <div class="record-context"><div class="role-badge" id="currentRole">PLAYER 1</div><p>Current line</p><blockquote id="currentText">Select a line to begin.</blockquote><span id="currentTimestamp">00:00.0</span></div>
+          <div class="recorder">
+            <div class="mic-orbit"><button id="recordButton" class="record-button" aria-label="Start recording"><i></i></button></div>
+            <strong id="recordStatus">Tap to record</strong><span id="recordTimer">00:00</span>
+            <audio id="recordPlayback" controls class="hidden"></audio>
+          </div>
+          <div class="take-list" id="takeList"></div>
+        </div>
+        <div class="panel-actions"><button class="ghost back" data-back="2">← Back</button><button class="primary" id="recordNext" disabled>Watch the premiere →</button></div>
+      </div>
+
+      <div class="panel" data-panel="4">
+        <div class="premiere-header"><span>✦ WORLD PREMIERE ✦</span><h3>Your dub is ready</h3></div>
+        <div class="cinema"><video id="finalVideo" playsinline></video><button class="play-dub" id="playDub">▶ Play the dub</button></div>
+        <div class="premiere-actions"><button class="ghost back" data-back="3">← Re-record</button><button class="primary" id="newDub">Make another dub</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>DUB NIGHT · PROTOTYPE 01</span><span>Built for questionable performances.</span></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
