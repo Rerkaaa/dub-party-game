@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dub-party-game",
+  "account_id": "4689ef4b97c4b31fc60cb94dafd8749a",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-08-15",
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "dub-party-db",
+    "database_id": "REPLACE_WITH_NEW_D1_DATABASE_ID",
+    "migrations_dir": "migrations"
+  }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "dub-party-media" }],
+  "triggers": { "crons": ["0 * * * *"] }
+}

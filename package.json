@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "check": "node --check app.js && node tests/static-check.mjs",
-    "test": "npm run check"
+    "test": "npm run check",
+    "check:worker": "node --check src/worker.js"
   }
 }

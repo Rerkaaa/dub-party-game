@@ -15,6 +15,10 @@ A browser-first prototype for a voice-based party game where players replace a s
 
 No video or recording is uploaded anywhere. Refreshing the page clears the session.
 
+## Online version (Cloudflare)
+
+The online service uses the same Cloudflare Worker + D1 approach as the LoL Stats project. A separate D1 database stores rooms and players, while R2 stores media. Every room and its uploaded recordings expire three days after creation; reusable scene-pack media is stored separately and does not expire.
+
 ## Run locally
 
 Serve the folder with any static server. For example:
