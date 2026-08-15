@@ -8,6 +8,9 @@ A browser-first prototype for a voice-based party game where players replace a s
 - Write replacement lines and choose timestamps
 - Record each line with the browser microphone
 - Play the muted video with recorded takes triggered in sync
+- Keep takes aligned after pause, resume, seek, and playback-speed changes
+- Validate timestamps and warn when lines may overlap
+- Stop recordings automatically after 20 seconds
 - Responsive UI suitable for GitHub Pages
 
 No video or recording is uploaded anywhere. Refreshing the page clears the session.
@@ -21,6 +24,10 @@ python -m http.server 8000
 ```
 
 Then open `http://localhost:8000`. Microphone access requires localhost or HTTPS.
+
+## Checks
+
+Run `npm test` to syntax-check the app and verify the main test-build safeguards.
 
 ## Roadmap
 

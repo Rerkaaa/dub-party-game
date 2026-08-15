@@ -1,0 +1,8 @@
+{
+  "name": "dub-night",
+  "private": true,
+  "scripts": {
+    "check": "node --check app.js && node tests/static-check.mjs",
+    "test": "npm run check"
+  }
+}
